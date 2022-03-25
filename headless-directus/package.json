@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx directus start",
+    "update": "npx directus database migrate:latest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
