@@ -3,12 +3,26 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "lint": "eslint --ext .vue,.js,.ts --ignore-path .eslintignore .",
+    "lint:fix": "eslint --fix --ext .vue,.js,.ts --ignore-path .eslintignore ."
   },
   "devDependencies": {
+    "@intlify/nuxt3": "^0.1.10",
     "@nuxtjs/tailwindcss": "^5.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.6.0",
     "nuxt3": "latest",
     "sass": "^1.49.11",
     "sass-loader": "^12.6.0"
+  },
+  "dependencies": {
+    "@nuxtjs/sitemap": "^2.4.0"
   }
 }

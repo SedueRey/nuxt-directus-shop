@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="default">
+  <NuxtLayout name="layout-event">
     <div class="text-tertiary font-headings bold text-4xl">Headings</div>
     <div class="text-xl text-quaternary font-subheadings italic">
       subheadings
@@ -10,6 +10,6 @@
 
 <script>
 export default {
-  name: "PageIndex",
+  name: "EventIndex",
 };
 </script>

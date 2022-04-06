@@ -1,7 +1,7 @@
 <template>
   <main class="page">
     <Head>
-      <Style type="text/css" :children="css" />
+      <Style type="text/css" :children="css"></Style>
     </Head>
     <slot />
   </main>
