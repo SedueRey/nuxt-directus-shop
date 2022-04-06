@@ -4,15 +4,14 @@ module.exports = {
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}'
+    './plugins/**/*.{js,ts}'
   ],
   theme: {
     extend: {
       fontFamily: {
-        one: ['Hind Madurai', 'sans-serif'],
-        two: ['Lora', 'sans-serif'],
-        three: ['Montserrat', 'sans-serif']
+        paragraphs: ['Hind Madurai', 'sans-serif'],
+        subheadings: ['Lora', 'sans-serif'],
+        headings: ['Montserrat', 'sans-serif']
       },
       colors: {
         primary: 'var(--primary)',

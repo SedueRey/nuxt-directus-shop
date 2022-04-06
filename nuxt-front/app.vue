@@ -1,5 +1,3 @@
 <template>
-  <div>
-    Miau
-  </div>
+  <NuxtPage />
 </template>
