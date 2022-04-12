@@ -2,22 +2,18 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true,
+    node: true
   },
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: "module",
-    parser: "@typescript-eslint/parser",
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false
   },
   extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:nuxt/recommended",
-    "plugin:vue/vue3-recommended",
-    "plugin:prettier/recommended",
-    "plugin:vue/vue3-essential",
+    '@nuxtjs',
+    'plugin:nuxt/recommended'
   ],
-  plugins: ["@typescript-eslint"],
-  rules: {
-    "vue/script-setup-no-uses-vars": "off",
-  },
-};
+  plugins: [
+  ],
+  // add your custom rules here
+  rules: {}
+}
