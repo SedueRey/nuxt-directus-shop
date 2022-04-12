@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+Default colors to tailwind be able to work
+*/
+:root {
+  --primary: #f47471;
+  --secondary: #f47471;
+  --tertiary: #f47471;
+  --quaternary: #f47471;
+}

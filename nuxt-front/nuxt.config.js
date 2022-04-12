@@ -2,6 +2,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   srcDir: 'src',
+  ssr: process.env.NODE_ENV === 'production',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -21,8 +22,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -33,10 +33,10 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-i18n',
+    '@nuxtjs/sitemap'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,5 +53,16 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  generate: { fallback: '404.html' },
+
+  sitemap: {
+    hostname: process.env.NUXT_ENV_BASE_URL,
+    gzip: true,
+    routes () {
+      // eslint-disable-next-line no-undef
+      // return getRoutes()
+    }
   }
 }
