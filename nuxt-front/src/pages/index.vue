@@ -1,64 +1,33 @@
 <template>
   <section>
-    <nuxt-link to="/socialmedia">
-      Social Media
-    </nuxt-link>
-    <style>{{ style.CSSPalette }}</style>
-    <style>{{ style.Typographies }}</style>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
-      Posts
-    </h1>
-    <hr>
-    <div v-if="posts">
-      <p v-for="post in posts" :key="post.id">
-        <nuxt-link :to="post.url">
-          {{ post.url }}
-          <span v-if="post.gallery.length > 0" class="flex flex-row">
-            <directus-image v-for="image in post.gallery" :id="image.directus_files_id" :key="image.id" />
-          </span>
-        </nuxt-link>
-      </p>
-    </div>
-    <hr>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
-      Pages
-    </h1>
-    <hr>
-    <div v-if="pages">
-      <p v-for="page in pages" :key="page.id">
-        {{ page.url }}
-        <span v-if="page.gallery.length > 0" class="flex flex-row">
-          <directus-image v-for="image in page.gallery" :id="image.directus_files_id" :key="image.id" />
-        </span>
-      </p>
-    </div>
-    <hr>
+    <!-- eslint-disable vue/no-v-html -->
+    <h1>{{ translate.title }}</h1>
+    <span class="block">{{ post.date_created }}</span>
+    <span class="block">{{ post.date_updated }}</span>
+    <span class="block">{{ post.category.name }}</span>
+    <div v-html="translate.short_description" />
+    <div v-html="translate.content" />
   </section>
 </template>
 
 <script>
+import createSEOMeta from '~/utils/seo'
 export default {
   name: 'IndexPage',
   async asyncData ({
     app,
-    $getAllPosts,
-    $getAllPages,
-    $getAllOptions
+    $getPostByUrl
   }) {
-    const posts = await $getAllPosts()
-    const pages = await $getAllPages()
-    const style = await $getAllOptions()
+    const post = await $getPostByUrl('/')
+    const locale = app.i18n.locales.find(el => el.code === app.i18n.locale)
+    const translate = post.translations.find(el => el.languages_id === locale.lang_id)
     return {
-      posts, pages, style
+      post, locale, translate
     }
+  },
+  head () {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return createSEOMeta(this.translate, i18nHead)
   }
-  /*
-    data () {
-      return {
-        posts: []
-      }
-    }
-    */
-
 }
 </script>

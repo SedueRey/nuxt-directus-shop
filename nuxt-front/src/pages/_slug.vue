@@ -1,5 +1,6 @@
 <template>
   <article>
+    <!-- eslint-disable vue/no-v-html -->
     <style>{{ style.CSSPalette }}</style>
     <style>{{ style.Typographies }}</style>
     {{ slug }} // {{ locale }}
@@ -8,7 +9,6 @@
     <span class="block">{{ post.date_created }}</span>
     <span class="block">{{ post.date_updated }}</span>
     <span class="block">{{ post.category.name }}</span>
-    <!-- eslint-disable vue/no-v-html -->
     <div v-html="translate.short_description" />
     <div v-html="translate.content" />
     <span v-if="post.gallery.length > 0" class="flex flex-row">
@@ -42,6 +42,24 @@ export default {
     const translate = post.translations.find(el => el.languages_id === locale.lang_id)
     return {
       style, slug, post, locale, translate
+    }
+  },
+  head () {
+    const title = this.translate.title
+    const shortDescription = this.translate.short_description
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: shortDescription
+        }
+      ],
+      htmlAttrs: {
+        ...i18nHead.htmlAttrs
+      }
     }
   }
 }

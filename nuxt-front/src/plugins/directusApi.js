@@ -39,7 +39,10 @@ export default ({ app }, inject) => {
   })
   inject('getPostByUrl', async (urlPost) => {
     const isFullStatic = app.$config.isFullStatic
-    const cleanUrlPost = urlPost.replaceAll('/', '')
+    let cleanUrlPost = urlPost.replaceAll('/', '')
+    if (cleanUrlPost === '' && isFullStatic) {
+      cleanUrlPost = 'index'
+    }
     const url = isFullStatic ? `${staticBaseUrl}posts/${cleanUrlPost}.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPost}`
     const post = await app.$axios.get(url)
       .then(r => r.data)
