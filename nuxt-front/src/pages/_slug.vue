@@ -1,8 +1,6 @@
 <template>
   <article>
     <!-- eslint-disable vue/no-v-html -->
-    <style>{{ style.CSSPalette }}</style>
-    <style>{{ style.Typographies }}</style>
     {{ slug }} // {{ locale }}
     <hr>
     <h1>{{ translate.title }}</h1>
@@ -22,44 +20,25 @@
       Tags
     </aside>
     <hr>
-    {{ post }}
   </article>
 </template>
 
 <script>
+import head from '~/mixins/head'
 export default {
   name: 'SlugPage',
+  mixins: [head],
   async asyncData ({
     app,
     params,
-    $getAllOptions,
     $getPostByUrl
   }) {
-    const slug = params.slug // When calling /abc the slug will be "abc"
-    const style = await $getAllOptions()
+    const slug = params.slug
     const post = await $getPostByUrl(slug)
     const locale = app.i18n.locales.find(el => el.code === app.i18n.locale)
     const translate = post.translations.find(el => el.languages_id === locale.lang_id)
     return {
-      style, slug, post, locale, translate
-    }
-  },
-  head () {
-    const title = this.translate.title
-    const shortDescription = this.translate.short_description
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
-    return {
-      title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: shortDescription
-        }
-      ],
-      htmlAttrs: {
-        ...i18nHead.htmlAttrs
-      }
+      slug, post, locale, translate
     }
   }
 }

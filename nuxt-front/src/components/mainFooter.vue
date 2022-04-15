@@ -1,12 +1,10 @@
 <template>
   <ul>
-    <li
+    <main-footer-page
       v-for="page in pages"
       :key="page.id"
-      class="lg:inline-block lg:px-4 lg:py-2"
-    >
-      {{ page.dashboard_title }}
-    </li>
+      :page="page"
+    />
   </ul>
 </template>
 

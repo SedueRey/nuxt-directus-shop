@@ -8,6 +8,7 @@
     <main class="my-8 py-8">
       <Nuxt />
     </main>
+    <main-footer />
   </div>
 </template>
 

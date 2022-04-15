@@ -5,7 +5,7 @@
   >
     <!-- eslint-disable vue/no-v-html -->
     <span
-      class="text-5xl hamburger"
+      class="text-3xl hamburger"
       @click="toggleMenu"
     >
       <div class="hamburger__inner">

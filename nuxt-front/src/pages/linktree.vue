@@ -1,9 +1,7 @@
 <template>
   <div>
-    <style>{{ style.CSSPalette }}</style>
-    <style>{{ style.Typographies }}</style>
     <h1 class="text-4xl font-headings text-tertiary bg-primary">
-      Social media
+      {{ $t('linktree') }}
     </h1>
     <ul v-if="media.length > 0">
       <li v-for="social in media" :key="social.social_media_url">
@@ -16,8 +14,10 @@
 </template>
 
 <script>
+import listHead from '~/mixins/listHead'
 export default {
   name: 'SocialMediaPage',
+  mixins: [listHead],
   async asyncData ({
     app,
     $getAllSocialMedia,
@@ -28,6 +28,9 @@ export default {
     return {
       media, style
     }
+  },
+  created () {
+    this.title = this.$t('linktree')
   }
 }
 </script>
