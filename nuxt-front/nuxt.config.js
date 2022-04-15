@@ -27,6 +27,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/directusApi.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -84,9 +85,43 @@ export default {
     }
   },
 
+  i18n: {
+    defaultLocale: 'en',
+    seo: true,
+    baseUrl: 'process.env.NUXT_ENV_BASE_URL',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_seduerey',
+      onlyOnRoot: true // recommended
+    },
+    vueI18nLoader: true,
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js',
+        lang_id: 1
+      },
+      {
+        code: 'es',
+        iso: 'es-ES',
+        file: 'es-ES.js',
+        lang_id: 2
+      }
+    ],
+    lazy: false,
+    langDir: 'lang/'
+  },
+
+  publicRuntimeConfig: {
+    isFullStatic: process.env.NUXT_ENV_FULL_STATIC,
+    backendUrl: process.env.DIRECTUS_BACKEND_URL
+  },
+
   analyze: {
     analyzerMode: 'static'
   },
+
   generate: { fallback: '404.html' },
 
   sitemap: {

@@ -1,33 +1,45 @@
 <template>
-  <section>
+  <article>
     <!-- eslint-disable vue/no-v-html -->
+    {{ slug }} // {{ locale }}
+    <hr>
     <h1>{{ translate.title }}</h1>
     <span class="block">{{ post.date_created }}</span>
     <span class="block">{{ post.date_updated }}</span>
     <span class="block">{{ post.category.name }}</span>
     <div v-html="translate.short_description" />
     <div v-html="translate.content" />
-  </section>
+    <span v-if="post.gallery.length > 0" class="flex flex-row">
+      <directus-image v-for="image in post.gallery" :id="image.directus_files_id" :key="image.id" size="xs" />
+    </span>
+    <hr>
+    <aside v-if="post.related_product.length > 0">
+      Related products
+    </aside>
+    <aside v-if="post.tags.length > 0">
+      Tags
+    </aside>
+    <hr>
+  </article>
 </template>
 
 <script>
-import createSEOMeta from '~/utils/seo'
+import head from '~/mixins/head'
 export default {
-  name: 'IndexPage',
+  name: 'SlugPage',
+  mixins: [head],
   async asyncData ({
     app,
+    params,
     $getPostByUrl
   }) {
-    const post = await $getPostByUrl('/')
+    const slug = params.slug
+    const post = await $getPostByUrl(slug)
     const locale = app.i18n.locales.find(el => el.code === app.i18n.locale)
     const translate = post.translations.find(el => el.languages_id === locale.lang_id)
     return {
-      post, locale, translate
+      slug, post, locale, translate
     }
-  },
-  head () {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
-    return createSEOMeta(this.translate, i18nHead)
   }
 }
 </script>

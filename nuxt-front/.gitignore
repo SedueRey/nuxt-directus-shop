@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+src/static/directus-mocks/*
+src/static/directus-files/*
