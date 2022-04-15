@@ -11,5 +11,16 @@ export default {
   accesibility: 'Accesibilidad',
   productList: 'Lista de productos',
   eventList: 'Lista de eventos',
-  postsList: 'Lista de publicaciones'
+  postsList: 'Lista de publicaciones',
+  postUnder: 'Publicado en',
+  postCreated: 'Escrito el',
+  postUpdated: 'Actualizado el',
+  selectedImage: 'Selected image',
+  categorystatic: 'Página estática',
+  categoryartwork: 'Ilustraciones',
+  categoryprogramming: 'Programación',
+  categorycomic: 'Cómic',
+  categorylegalpages: 'Páginas legales',
+  noImageAvailable: 'Sin imagen de producto',
+  relatedProducts: 'Productos relacionados'
 }

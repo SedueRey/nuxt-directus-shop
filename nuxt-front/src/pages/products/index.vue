@@ -1,19 +1,15 @@
 <template>
   <section>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
+    <h1>
       {{ $t('productList') }}
     </h1>
-    <hr>
-    <div v-if="products">
-      <p v-for="product in products" :key="product.id">
-        <nuxt-link :to="`products/${product.url}`">
-          {{ product.url }}
-          <span v-if="product.gallery.length > 0" class="flex flex-row">
-            <directus-image v-for="image in product.gallery" :id="image.directus_files_id" :key="image.id" />
-          </span>
-        </nuxt-link>
-      </p>
-    </div>
+    <ul class="single__relatedProductsList">
+      <product-card
+        v-for="product in products"
+        :key="product.id"
+        :url="product.url"
+      />
+    </ul>
   </section>
 </template>
 

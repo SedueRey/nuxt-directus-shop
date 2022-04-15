@@ -23,7 +23,9 @@ export default ({ app }, inject) => {
   })
   inject('getAllPosts', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic ? `${staticBaseUrl}posts.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[type][_eq]=post&filter[status][_eq]=published`
+    const url = isFullStatic
+      ? `${staticBaseUrl}posts.json`
+      : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=post&filter[status][_eq]=published`
     const posts = await app.$axios.get(url)
       .then(r => r.data)
       .then(r => isFullStatic ? r.filter(el => el.type === 'post' && el.status === 'published') : r.data)
@@ -31,7 +33,9 @@ export default ({ app }, inject) => {
   })
   inject('getAllPages', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic ? `${staticBaseUrl}posts.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[type][_eq]=page&filter[status][_eq]=published`
+    const url = isFullStatic
+      ? `${staticBaseUrl}posts.json`
+      : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=page&filter[status][_eq]=published`
     const posts = await app.$axios.get(url)
       .then(r => r.data)
       .then(r => isFullStatic ? r.filter(el => el.type === 'page' && el.status === 'published') : r.data)

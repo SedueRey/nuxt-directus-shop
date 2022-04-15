@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1 class="text-4xl font-headings text-tertiary bg-primary">
-      {{ $t('postsList') }}
+      {{ $t('postsList') }} {{ category }} {{ tag }}
     </h1>
     <hr>
     <div v-if="posts">
@@ -32,8 +32,21 @@ export default {
       posts
     }
   },
+  data () {
+    return {
+      category: null,
+      tag: null
+    }
+  },
   created () {
     this.title = this.$t('postsList')
+    const params = this.$route.query
+    if (params.category) {
+      this.category = params.category
+    }
+    if (params.tag) {
+      this.tag = params.tag
+    }
   }
 }
 </script>
