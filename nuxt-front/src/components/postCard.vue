@@ -1,38 +1,35 @@
 <template>
-  <li class="productCard__container">
+  <li class="postCard__container">
     <nuxt-link
-      v-if="product && translate"
-      :to="`products/${url}`"
-      class="productCard"
+      v-if="post && translate"
+      :to="`${url}`"
+      class="postCard"
     >
       <div
         v-if="hasGallery"
         class="w-full overflow-hidden relative h-32"
       >
         <directus-image
-          :id="product.gallery[0].directus_files_id"
-          class="productCard__image absolute top-0 left-0 right-0"
+          :id="post.gallery[0].directus_files_id"
+          class="postCard__image absolute top-0 left-0 right-0"
           :title="translate.title"
           size="mdcard"
           style="transform:scale(2)"
         />
       </div>
-      <span v-else class="productCard__canvas">
+      <span v-else class="postCard__canvas">
         {{ $t('noImageAvailable') }}
       </span>
       <h3 class="p-2">
-        <span class="float-right">
-          {{ product.price }} &euro;
-        </span>
-        <span class="productCard__title">
+        <span class="postCard__title">
           {{ translate.title }}
         </span>
       </h3>
       <!-- eslint-disable vue/no-v-html -->
       <p
-        v-if="translate.excerpt"
-        class="productCard__excerpt"
-        v-html="translate.excerpt.substring(0, 100)"
+        v-if="translate.short_description"
+        class="postCard__excerpt"
+        v-html="translate.short_description.substring(0, 100)"
       />
     </nuxt-link>
   </li>
@@ -47,28 +44,28 @@ export default {
   data () {
     return {
       translate: null,
-      product: null
+      post: null
     }
   },
   async fetch () {
-    this.product = await this.$getManufactureByUrl(this.url)
+    this.post = await this.$getPostByUrl(this.url)
     const locale = this.$i18n.locales.find(el => el.code === this.$i18n.locale)
-    this.translate = this.product.translations.find(el => el.languages_id === locale.lang_id)
+    this.translate = this.post.translations.find(el => el.languages_id === locale.lang_id)
   },
   computed: {
     hasGallery () {
-      return this.product.gallery.length > 0
+      return this.post.gallery.length > 0
     }
   }
 }
 </script>
 
 <style lang="scss">
-.productCard {
+.postCard {
   @apply block;
   &__container {
-    @apply mb-8 rounded border-2 border-quaternary block w-full cursor-pointer;
-    @apply hover:bg-tertiary hover:border-tertiary hover:shadow-lg;
+    @apply mb-8 rounded border-2 border-tertiary block w-full cursor-pointer;
+    @apply hover:bg-quaternary hover:border-quaternary hover:shadow-lg;
     @screen md {
       width: calc(33% - 1rem);
     }
@@ -76,10 +73,10 @@ export default {
       width: calc(25% - 1rem);
     }
     &:hover {
-      .productCard__canvas {
-        @apply bg-tertiary;
+      .postCard__canvas {
+        @apply bg-quaternary;
       }
-      .productCard__title {
+      .postCard__title {
         @apply text-primary;
       }
     }
@@ -91,7 +88,7 @@ export default {
     @apply font-headings text-tertiary;
   }
   &__excerpt {
-    @apply text-sm p-2;
+    @apply text-sm p-2 block;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;

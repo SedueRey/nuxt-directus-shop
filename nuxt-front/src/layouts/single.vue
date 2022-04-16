@@ -22,6 +22,7 @@ export default {
   },
   async fetch () {
     this.style = await this.$getAllOptions()
+    this.$store.commit('setOptions', this.style)
   },
   head: {
     bodyAttrs: {

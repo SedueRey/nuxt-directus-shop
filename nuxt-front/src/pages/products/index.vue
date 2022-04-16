@@ -1,9 +1,9 @@
 <template>
-  <section>
-    <h1>
+  <section class="productList">
+    <h1 class="productList__title">
       {{ $t('productList') }}
     </h1>
-    <ul class="single__relatedProductsList">
+    <ul class="productList__items">
       <product-card
         v-for="product in products"
         :key="product.id"
@@ -33,3 +33,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.productList {
+  @apply p-4 md:p-0;
+  &__title {
+    @apply text-4xl font-headings text-tertiary my-4;
+  }
+  &__items {
+    @apply flex flex-col md:flex-row flex-wrap mx-0 place-content-between;
+  }
+}
+</style>

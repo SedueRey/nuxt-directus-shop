@@ -24,6 +24,9 @@
         class="menu__menulist text-xl space-y-6 text-base lg:text-right lg:space-y-0 lg:container lg:mx-auto"
         @click="hideMenu"
       >
+        <li v-if="showTitle" class="menu__title">
+          {{ $t('appname') }}
+        </li>
         <li class="lg:inline-block lg:px-4 lg:py-2">
           <nuxt-link :to="localePath('index')">
             {{ $t('home') }}
@@ -80,6 +83,18 @@ export default {
   },
   async fetch () {
     this.pages = await this.$getAllPages()
+  },
+  computed: {
+    showLogo () {
+      return this.$store.state.options
+        ? this.$store.state.options.showLogo || true
+        : true
+    },
+    showTitle () {
+      return this.$store.state.options
+        ? this.$store.state.options.showTitle || true
+        : true
+    }
   },
   methods: {
     toggleMenu () {
@@ -193,6 +208,9 @@ export default {
       &__items {
         transform: translateX(0);
       }
+      &__title {
+        @apply font-headings text-2xl my-4
+      }
     }
   }
 }
@@ -206,6 +224,9 @@ export default {
     z-index: 10;
     &__items {
       background-color: #348185;
+    }
+    &__title {
+      @apply font-headings float-left text-xl mt-1 ml-3
     }
     a {
       color: #FFF;

@@ -1,4 +1,5 @@
 export default {
+  appname: 'Pequeña tienda de ejemplo',
   home: 'Inicio',
   aboutme: 'Sobre mi',
   posts: 'Posts',
@@ -22,5 +23,7 @@ export default {
   categorycomic: 'Cómic',
   categorylegalpages: 'Páginas legales',
   noImageAvailable: 'Sin imagen de producto',
+  noPosts: 'Lo sentimos, no hay publicaciones con ese criterio',
+  items: 'elementos',
   relatedProducts: 'Productos relacionados'
 }

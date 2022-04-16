@@ -1,4 +1,5 @@
 export default {
+  appname: 'Small shop example',
   home: 'Home',
   aboutme: 'About me',
   posts: 'Blog posts',
@@ -22,5 +23,7 @@ export default {
   categorycomic: 'Comic',
   categorylegalpages: 'Legal pages',
   noImageAvailable: 'No image available',
+  noPosts: 'Sorry, there are no posts using this filters',
+  items: 'elementos',
   relatedProducts: 'Related products'
 }

@@ -14,7 +14,7 @@
       <h2 class="single__shortDescription" v-html="translate.short_description" />
       <div v-if="isPost" class="single__metadata">
         <span>
-          {{ $t('postCreated') }}: <time :datetime="post.date_created">{{ readableCreatedDate }}</time>
+          {{ $t('postCreated') }}: <time :datetime="post.published_date">{{ readableCreatedDate }}</time>
         </span>
         ,
         <span>
@@ -98,7 +98,7 @@ export default {
       }
     },
     readableCreatedDate () {
-      return new Date(this.post.date_created)
+      return new Date(this.post.published_date)
         .toLocaleDateString(this.languageFormat.iso, this.languageFormat.type)
     },
     readableUpdatedDate () {
