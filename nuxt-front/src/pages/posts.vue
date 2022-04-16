@@ -21,6 +21,7 @@
           <post-card
             v-for="post in postsByYear(year)"
             :key="post.id"
+            class="postList__card"
             :url="post.url"
           />
         </ul>
@@ -105,7 +106,10 @@ export default {
     @apply text-quaternary text-xl md:text-2xl font-subheadings leading-tight mb-4 py-2 border-b-2 border-quaternary;
   }
   &__items {
-    @apply flex flex-col md:flex-row flex-wrap mx-0 mb-16 place-content-between;
+    @apply flex flex-col md:flex-row flex-wrap mx-0 mb-16 place-content-start;
+  }
+  &__card {
+    @apply mr-0 md:mr-4;
   }
   &__howMany {
     @apply text-sm ml-2

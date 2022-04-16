@@ -9,12 +9,11 @@
         v-if="hasGallery"
         class="w-full overflow-hidden relative h-32"
       >
-        <directus-image
+        <directus-background-image
           :id="post.gallery[0].directus_files_id"
-          class="postCard__image absolute top-0 left-0 right-0"
+          class="postCard__gallery"
           :title="translate.title"
           size="mdcard"
-          style="transform:scale(2)"
         />
       </div>
       <span v-else class="postCard__canvas">
@@ -82,7 +81,7 @@ export default {
     }
   }
   &__canvas {
-    @apply italic block h-32 flex items-center justify-center w-full bg-quaternary text-primary;
+    @apply italic block h-32 flex items-center justify-center w-full bg-quaternary text-primary rounded-t-lg;
   }
   &__title {
     @apply font-headings text-tertiary;

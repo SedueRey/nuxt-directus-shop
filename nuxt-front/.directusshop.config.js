@@ -22,7 +22,7 @@ module.exports = {
       { width: 64, height: 64, fit: 'cover', name: 'xs' },
       { width: 128, height: 128, fit: 'cover', name: 'sm' },
       { width: 568, fit: 'outside', name: 'md' },
-      { width: 446, height: 256, fit: 'cover', name: 'mdcard' },
+      { width: 650, height: 400, fit: 'cover', name: 'mdcard' },
       { width: 900, height: 250, fit: 'cover', name: 'cover' },
     ]
   },

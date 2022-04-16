@@ -33,5 +33,9 @@ export default {
   soldoutdescription: 'Sorry, this product is currently out of stock and cannot be purchased.',
   ondemand: 'On demand',
   ondemanddescription: 'This product is made on demand. Please ask for delivery dates and conditions or contact us.',
-  relatedProducts: 'Related products'
+  relatedProducts: 'Related products',
+  eventfrom: 'From',
+  eventto: 'to',
+  noevents: 'Sorry, there´s no events here',
+  moreinfoeventlocation: 'You can see the map details if you clic this link'
 }

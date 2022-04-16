@@ -9,12 +9,11 @@
         v-if="hasGallery"
         class="w-full overflow-hidden relative h-32"
       >
-        <directus-image
+        <directus-background-image
           :id="product.gallery[0].directus_files_id"
           class="productCard__image absolute top-0 left-0 right-0"
           :title="translate.title"
           size="mdcard"
-          style="transform:scale(2)"
         />
       </div>
       <span v-else class="productCard__canvas">

@@ -33,5 +33,9 @@ export default {
   soldoutdescription: 'Lo sentimos, este producto está ahora mismo agotado y no puede ser comprado.',
   ondemand: 'Bajo pedido',
   ondemanddescription: 'Este producto se realiza bajo demanda. Consulte las fechas de entrega y condiciones para el mismo o póngase en contacto con nosotros.',
-  relatedProducts: 'Productos relacionados'
+  relatedProducts: 'Productos relacionados',
+  eventfrom: 'Desde el',
+  eventto: 'Hasta el',
+  noevents: 'Lo sentimos, no hay eventos en estos momentos',
+  moreinfoeventlocation: 'Puede ver los detalles del mapa pulsando sobre este link'
 }
