@@ -132,7 +132,7 @@ export default {
     @apply text-quaternary text-xl md:text-2xl font-subheadings leading-tight my-2;
   }
   &__articleBody {
-    @apply space-y-4 mt-8;
+    @apply space-y-4 mt-8 ml-0 md:ml-20;
     a {
       @apply text-tertiary underline;
     }

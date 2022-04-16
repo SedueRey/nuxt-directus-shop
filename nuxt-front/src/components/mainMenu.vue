@@ -25,7 +25,9 @@
         @click="hideMenu"
       >
         <li v-if="showTitle" class="menu__title">
-          {{ $t('appname') }}
+          <nuxt-link :to="localePath('index')">
+            {{ $t('appname') }}
+          </nuxt-link>
         </li>
         <li class="lg:inline-block lg:px-4 lg:py-2">
           <nuxt-link :to="localePath('index')">

@@ -2,7 +2,7 @@
   <picture class="directusImage">
     <source :srcset="webp" type="image/webp">
     <source :srcset="jpg" type="image/jpeg">
-    <img :src="jpg" loading="lazy" :alt="title" @click="launch">
+    <img :src="jpg" :alt="title" @click="launch">
   </picture>
 </template>
 <script>

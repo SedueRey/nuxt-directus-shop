@@ -25,5 +25,13 @@ export default {
   noImageAvailable: 'Sin imagen de producto',
   noPosts: 'Lo sentimos, no hay publicaciones con ese criterio',
   items: 'elementos',
+  lowstock: 'Casi agotado',
+  lowstockdescription: 'Este producto está casi agotado. ¡Date prisa antes de que te quedes sin él!',
+  available: 'Disponible',
+  availabledescription: 'Este producto se encuentra disponible en estos momentos',
+  soldout: 'Agotado',
+  soldoutdescription: 'Lo sentimos, este producto está ahora mismo agotado y no puede ser comprado.',
+  ondemand: 'Bajo pedido',
+  ondemanddescription: 'Este producto se realiza bajo demanda. Consulte las fechas de entrega y condiciones para el mismo o póngase en contacto con nosotros.',
   relatedProducts: 'Productos relacionados'
 }

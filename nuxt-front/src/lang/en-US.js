@@ -25,5 +25,13 @@ export default {
   noImageAvailable: 'No image available',
   noPosts: 'Sorry, there are no posts using this filters',
   items: 'elementos',
+  lowstock: 'Low stock',
+  lowstockdescription: 'This product is almost sold out, hurry before you run out!',
+  available: 'Available',
+  availabledescription: 'This product is currently available',
+  soldout: 'Sold out',
+  soldoutdescription: 'Sorry, this product is currently out of stock and cannot be purchased.',
+  ondemand: 'On demand',
+  ondemanddescription: 'This product is made on demand. Please ask for delivery dates and conditions or contact us.',
   relatedProducts: 'Related products'
 }

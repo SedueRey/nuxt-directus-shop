@@ -7,7 +7,7 @@ module.exports = {
       events: '*.*',
       social_media: '*.*',
       options: '*.*',
-      manufacture: '*.*',
+      manufacture: '*.*,category.categories_id.name',
     },
   },
   images: {
