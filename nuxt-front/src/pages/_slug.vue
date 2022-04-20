@@ -3,30 +3,32 @@
   <article
     :class="type"
     class="single"
+    itemscope
+    itemtype="http://schema.org/Article"
   >
     <aside v-if="post.cover_image" class="single__cover">
-      <directus-image :id="post.cover_image.id" size="cover" :title="translate.title" />
+      <directus-image :id="post.cover_image.id" itemprop="image" size="cover" :title="translate.title" />
     </aside>
     <div class="single__inner">
-      <h1 class="single__title">
+      <h1 class="single__title" itemprop="name">
         {{ translate.title }}
       </h1>
-      <h2 class="single__shortDescription" v-html="translate.short_description" />
+      <h2 itemprop="abstract" class="single__shortDescription" v-html="translate.short_description" />
       <div v-if="isPost" class="single__metadata">
         <span>
-          {{ $t('postCreated') }}: <time :datetime="post.published_date">{{ readableCreatedDate }}</time>
+          {{ $t('postCreated') }}: <time itemprop="datePublished" :datetime="post.published_date">{{ readableCreatedDate }}</time>
         </span>
         ,
         <span>
-          {{ $t('postUpdated') }} <time :datetime="post.date_updated">{{ readableUpdatedDate }}</time>
+          {{ $t('postUpdated') }} <time itemprop="dateModified" :datetime="post.date_updated">{{ readableUpdatedDate }}</time>
         </span>
-        <span v-if="category">
+        <span v-if="category" itemprop="category">
           {{ $t('postUnder') }}
           <nuxt-link :to="`/posts?category=${category}`">
             {{ $t(`category${category}`) }}
           </nuxt-link>
         </span>
-        <aside v-if="hasTags">
+        <aside v-if="hasTags" itemprop="keywords">
           Tags:
           <nuxt-link v-for="tag in post.tags" :key="tag.id" :to="`/posts?tag=${tag.tags_id.name}`">
             {{ tag.tags_id.name }}
@@ -36,7 +38,7 @@
       <span v-if="hasGallery">
         <directus-gallery :images="post.gallery" />
       </span>
-      <div class="single__articleBody" v-html="translate.content" />
+      <div class="single__articleBody" itemprop="articleBody" v-html="translate.content" />
       <aside v-if="hasRelatedProducts" class="single__relatedProducts">
         <h1 class="single__relatedProductsTitle">
           Related products
