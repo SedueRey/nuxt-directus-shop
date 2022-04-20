@@ -1,3 +1,5 @@
+import getRoutes from './src/utils/getRoutes'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -37,8 +39,8 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
-    'nuxt-i18n',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    'nuxt-i18n'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -118,15 +120,22 @@ export default {
     backendUrl: process.env.DIRECTUS_BACKEND_URL
   },
 
-  generate: { fallback: '404.html' },
-
   sitemap: {
     hostname: process.env.NUXT_ENV_BASE_URL,
     gzip: true,
     routes () {
-      // eslint-disable-next-line no-undef
-      // return getRoutes()
+      return getRoutes({
+        isStatic: process.env.NUXT_ENV_FULL_STATIC,
+        locales: ['', 'es'],
+        collections: [
+          { name: 'posts', url: '/' },
+          { name: 'manufacture', url: 'products' },
+          { name: 'events', url: 'events' }
+        ]
+      })
     }
-  }
+  },
+
+  generate: { fallback: '404.html' }
 
 }
