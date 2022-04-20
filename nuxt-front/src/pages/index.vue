@@ -1,19 +1,22 @@
 <template>
-  <section>
+  <section
+    class="page"
+    :class="category"
+  >
     <!-- eslint-disable vue/no-v-html -->
-    <h1>{{ translate.title }}</h1>
-    <span class="block">{{ post.date_created }}</span>
-    <span class="block">{{ post.date_updated }}</span>
-    <span class="block">{{ post.category.name }}</span>
-    <div v-html="translate.short_description" />
-    <div v-html="translate.content" />
+    <h1 class="page__title">
+      {{ translate.title }}
+    </h1>
+    <div class="page__shortDescription" v-html="translate.short_description" />
+    <div class="page__description" v-html="translate.content" />
   </section>
 </template>
 
 <script>
-import createSEOMeta from '~/utils/seo'
+import head from '~/mixins/head'
 export default {
   name: 'IndexPage',
+  mixins: [head],
   async asyncData ({
     app,
     $getPostByUrl
@@ -25,9 +28,25 @@ export default {
       post, locale, translate
     }
   },
-  head () {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
-    return createSEOMeta(this.translate, i18nHead)
+  computed: {
+    category () {
+      return this.post.category.name || ''
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.page {
+  @apply py-4 px-2 min-h-screen xl:px-64;
+  &__title {
+    @apply text-tertiary text-5xl font-headings leading-tight;
+  }
+  &__shortDescription {
+    @apply text-quaternary text-3xl font-subheadings leading-tight my-6;
+  }
+  &__description {
+    @apply space-y-4
+  }
+}
+</style>

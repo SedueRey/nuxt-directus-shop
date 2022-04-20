@@ -15,7 +15,7 @@
       </div>
     </span>
     <span class="menu__bg" @click="hideMenu" />
-    <nav class="menu__items p-5 shadow-2xl lg:shadow-lg lg:p-2 lg:bg-secondary lg:text-background">
+    <nav class="menu__items p-5 shadow-2xl lg:shadow-lg lg:p-2 lg:bg-quaternary lg:text-secondary">
       <p
         class="text-2xl font-headings pb-16 font-bold lg:hidden"
         v-html="$t('menulabel')"
@@ -24,6 +24,11 @@
         class="menu__menulist text-xl space-y-6 text-base lg:text-right lg:space-y-0 lg:container lg:mx-auto"
         @click="hideMenu"
       >
+        <li v-if="showTitle" class="menu__title">
+          <nuxt-link :to="localePath('index')">
+            {{ $t('appname') }}
+          </nuxt-link>
+        </li>
         <li class="lg:inline-block lg:px-4 lg:py-2">
           <nuxt-link :to="localePath('index')">
             {{ $t('home') }}
@@ -80,6 +85,18 @@ export default {
   },
   async fetch () {
     this.pages = await this.$getAllPages()
+  },
+  computed: {
+    showLogo () {
+      return this.$store.state.options
+        ? this.$store.state.options.showLogo || true
+        : true
+    },
+    showTitle () {
+      return this.$store.state.options
+        ? this.$store.state.options.showTitle || true
+        : true
+    }
   },
   methods: {
     toggleMenu () {
@@ -152,12 +169,12 @@ export default {
       bottom: 0;
       overflow: auto;
       background-color: var(--tertiary);
-      color: #fff;
+      color: var(--secondary);
       width: 88vw;
       transform: translateX(-100vw);
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);;
       a {
-        color: #fff;
+        color: var(--secondary);
         @apply no-underline hover:underline;
       }
     }
@@ -167,10 +184,10 @@ export default {
     overflow-y: hidden;
     .hamburger {
       left: 73vw;
-      color: #f0f0f0;
+      color: var(--secondary);
       background-color: transparent;
       &__inner > span {
-        background-color: #f0f0f0;
+        background-color: var(--secondary);
       }
       &__inner > span:first-child {
         transform: rotate(-45deg);
@@ -193,6 +210,9 @@ export default {
       &__items {
         transform: translateX(0);
       }
+      &__title {
+        @apply font-headings text-2xl my-4
+      }
     }
   }
 }
@@ -204,9 +224,15 @@ export default {
     left: 0;
     right: 0;
     z-index: 10;
+    &__items {
+      background-color: #348185;
+    }
+    &__title {
+      @apply font-headings float-left text-xl mt-1 ml-3
+    }
     a {
-      color: var(--tertiary);
-      font-weight: 600;
+      color: #FFF;
+      font-weight: 400;
       letter-spacing: 0.02em;
       &:hover {
         text-decoration: underline;

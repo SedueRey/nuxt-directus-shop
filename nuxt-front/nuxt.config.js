@@ -118,10 +118,6 @@ export default {
     backendUrl: process.env.DIRECTUS_BACKEND_URL
   },
 
-  analyze: {
-    analyzerMode: 'static'
-  },
-
   generate: { fallback: '404.html' },
 
   sitemap: {
@@ -132,4 +128,5 @@ export default {
       // return getRoutes()
     }
   }
+
 }

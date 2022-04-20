@@ -1,16 +1,18 @@
 <template>
-  <section>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
+  <section class="eventList">
+    <h1 class="eventList__title">
       Event list
     </h1>
-    <hr>
-    <div v-if="events">
-      <p v-for="event in events" :key="event.id">
-        <nuxt-link :to="`events/${event.url}`">
-          {{ event.url }}
-        </nuxt-link>
-      </p>
-    </div>
+    <ul v-if="events.length > 0" class="eventList__items">
+      <event-card
+        v-for="event in events"
+        :key="event.id"
+        :url="event.url"
+      />
+    </ul>
+    <p v-else>
+      {{ $t('noevents') }}
+    </p>
   </section>
 </template>
 
@@ -34,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.eventList {
+  @apply p-4 md:p-0;
+  &__title {
+    @apply text-4xl font-headings text-tertiary my-4;
+  }
+  &__items {
+    @apply flex flex-col md:flex-row flex-wrap mx-0 place-content-between;
+  }
+}
+</style>

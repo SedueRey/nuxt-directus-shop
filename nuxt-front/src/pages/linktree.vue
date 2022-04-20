@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
-      {{ $t('linktree') }}
-    </h1>
-    <ul v-if="media.length > 0">
-      <li v-for="social in media" :key="social.social_media_url">
-        <a :href="social.social_media_url" target="_blank">
-          {{ social.social_media_name }}
-        </a>
-      </li>
-    </ul>
-  </div>
+  <section class="linktree">
+    <nav v-if="media.length > 0">
+      <ul class="linktree__menu">
+        <li v-for="social in media" :key="social.social_media_url">
+          <social-media-link :social="social" />
+        </li>
+      </ul>
+    </nav>
+  </section>
 </template>
 
 <script>
@@ -20,13 +17,11 @@ export default {
   mixins: [listHead],
   async asyncData ({
     app,
-    $getAllSocialMedia,
-    $getAllOptions
+    $getAllSocialMedia
   }) {
     const media = await $getAllSocialMedia()
-    const style = await $getAllOptions()
     return {
-      media, style
+      media
     }
   },
   created () {
@@ -34,3 +29,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.linktree {
+  @apply min-h-screen max-h-screen overflow-auto py-4;
+  @apply flex flex-col items-center justify-center;
+  &__menu {
+    @apply space-y-8
+  }
+}
+</style>

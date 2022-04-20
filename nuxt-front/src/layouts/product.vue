@@ -1,11 +1,11 @@
 <template>
-  <div class="default-template">
+  <div class="product-detail-template">
     <span v-if="style" class="embedded-styles">
       <style>{{ style.CSSPalette }}</style>
       <style>{{ style.Typographies }}</style>
     </span>
     <main-menu />
-    <main class="my-8 py-8 container mx-auto">
+    <main>
       <Nuxt />
     </main>
     <main-footer />
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'DefaultTemplate',
+  name: 'ProductDetail',
   data () {
     return {
       style: null

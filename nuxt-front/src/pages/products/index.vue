@@ -1,19 +1,15 @@
 <template>
-  <section>
-    <h1 class="text-4xl font-headings text-tertiary bg-primary">
+  <section class="productList">
+    <h1 class="productList__title">
       {{ $t('productList') }}
     </h1>
-    <hr>
-    <div v-if="products">
-      <p v-for="product in products" :key="product.id">
-        <nuxt-link :to="`products/${product.url}`">
-          {{ product.url }}
-          <span v-if="product.gallery.length > 0" class="flex flex-row">
-            <directus-image v-for="image in product.gallery" :id="image.directus_files_id" :key="image.id" />
-          </span>
-        </nuxt-link>
-      </p>
-    </div>
+    <ul class="productList__items">
+      <product-card
+        v-for="product in products"
+        :key="product.id"
+        :url="product.url"
+      />
+    </ul>
   </section>
 </template>
 
@@ -37,3 +33,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.productList {
+  @apply p-4 md:p-0;
+  &__title {
+    @apply text-4xl font-headings text-tertiary my-4;
+  }
+  &__items {
+    @apply flex flex-col md:flex-row flex-wrap mx-0 place-content-between;
+  }
+}
+</style>

@@ -19,7 +19,8 @@ const writeContentToFile = ({url, content, collection}) => {
 };
 
 const getStaticContent = async (collection) => {
-  const url = `${host}items/${collection}?fields=${config.static.fields}`;
+  // dependiendo de la coleccion
+  const url = `${host}items/${collection}?fields=${config.static.fields[collection]}`;
   await axios.get(url)
     .then((response) => response.data)
     .catch(function (error) {

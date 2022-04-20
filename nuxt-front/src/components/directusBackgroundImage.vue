@@ -1,13 +1,9 @@
 <template>
-  <picture class="directusImage">
-    <source :srcset="webp" type="image/webp">
-    <source :srcset="jpg" type="image/jpeg">
-    <img :src="jpg" :alt="title" @click="launch">
-  </picture>
+  <div class="w-full h-full" :style="style" />
 </template>
 <script>
 export default {
-  name: 'DirectusImage',
+  name: 'DirectusBackgroundImage',
   props: {
     id: { type: String, required: true },
     size: { type: String, required: false, default: 'xs' },
@@ -17,16 +13,15 @@ export default {
     url () {
       return `/directus-files/${this.id}/${this.size}`
     },
-    webp () {
-      return `${this.url}.webp`
-    },
     jpg () {
       return `${this.url}.webp`
-    }
-  },
-  methods: {
-    launch () {
-      this.$emit('clickImage', this.id)
+    },
+    style () {
+      return `
+        background-image: url('${this.jpg}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      `
     }
   }
 }
