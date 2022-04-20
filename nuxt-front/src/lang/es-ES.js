@@ -37,5 +37,6 @@ export default {
   eventfrom: 'Desde el',
   eventto: 'Hasta el',
   noevents: 'Lo sentimos, no hay eventos en estos momentos',
+  nsfw: 'No es apropiado para abrir en el trabajo',
   moreinfoeventlocation: 'Puede ver los detalles del mapa pulsando sobre este link'
 }

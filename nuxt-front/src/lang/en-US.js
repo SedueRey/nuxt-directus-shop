@@ -37,5 +37,6 @@ export default {
   eventfrom: 'From',
   eventto: 'to',
   noevents: 'Sorry, there´s no events here',
+  nsfw: 'Possibly not safe for work',
   moreinfoeventlocation: 'You can see the map details if you clic this link'
 }
