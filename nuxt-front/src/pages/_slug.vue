@@ -13,6 +13,46 @@
       <h1 class="single__title" itemprop="name">
         {{ translate.title }}
       </h1>
+      <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <a itemprop="item" href="/">
+            <span itemprop="name">{{ $t('appname') }}</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="separator">
+          //
+        </li>
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="/posts"
+        >
+          <a
+            itemscope
+            itemtype="https://schema.org/WebPage"
+            itemprop="item"
+            itemid="https://example.com/books/sciencefiction"
+            href="https://example.com/books/sciencefiction"
+          >
+            <span itemprop="name">{{ $t('posts') }}</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <li class="separator">
+          //
+        </li>
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <span itemprop="name">{{ translate.title }}</span>
+          <meta itemprop="position" content="3">
+        </li>
+      </ol>
       <h2 itemprop="abstract" class="single__shortDescription" v-html="translate.short_description" />
       <div v-if="isPost" class="single__metadata">
         <span>
@@ -147,6 +187,15 @@ export default {
   }
   &__relatedProductsList {
     @apply flex flex-col md:flex-row flex-wrap mx-0 place-content-between;
+  }
+}
+.breadcrumbs {
+  @apply py-4 text-sm flex flex-row place-content-start;
+  li {
+    @apply mr-2
+  }
+  a {
+    @apply text-quaternary underline hover:line-through
   }
 }
 </style>

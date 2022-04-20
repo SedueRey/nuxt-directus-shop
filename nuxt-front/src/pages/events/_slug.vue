@@ -4,6 +4,46 @@
     <h1 class="event__title" itemprop="name">
       {{ translate.title }}
     </h1>
+    <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <a itemprop="item" href="/">
+          <span itemprop="name">{{ $t('appname') }}</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="separator">
+        //
+      </li>
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="/event"
+      >
+        <a
+          itemscope
+          itemtype="https://schema.org/WebPage"
+          itemprop="item"
+          itemid="https://example.com/books/sciencefiction"
+          href="https://example.com/books/sciencefiction"
+        >
+          <span itemprop="name">{{ $t('events') }}</span></a>
+        <meta itemprop="position" content="2">
+      </li>
+      <li class="separator">
+        //
+      </li>
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <span itemprop="name">{{ translate.title }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+    </ol>
     <h2 v-if="translate.excerpt" itemprop="about" class="event__excerpt" v-html="translate.excerpt" />
     <p class="event__metadata">
       {{ $t('eventfrom') }}
