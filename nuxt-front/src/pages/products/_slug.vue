@@ -1,25 +1,69 @@
 <template>
   <article
     class="product"
+    itemscope
+    itemtype="http://schema.org/Product"
   >
     <!-- eslint-disable vue/no-v-html -->
     <div class="product__inner">
-      <h1 class="product__title">
+      <h1 class="product__title" itemprop="name">
         {{ translate.title }}
       </h1>
-      <h2 v-if="translate.excerpt" class="product__excerpt" v-html="translate.excerpt" />
+      <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <a itemprop="item" href="/">
+            <span itemprop="name">{{ $t('appname') }}</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="separator">
+          //
+        </li>
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="/products"
+        >
+          <a
+            itemscope
+            itemtype="https://schema.org/WebPage"
+            itemprop="item"
+            itemid="https://example.com/books/sciencefiction"
+            href="https://example.com/books/sciencefiction"
+          >
+            <span itemprop="name">{{ $t('products') }}</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <li class="separator">
+          //
+        </li>
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <span itemprop="name">{{ translate.title }}</span>
+          <meta itemprop="position" content="3">
+        </li>
+      </ol>
+      <h2 v-if="translate.excerpt" itemprop="slogan" class="product__excerpt" v-html="translate.excerpt" />
       <div v-if="category" class="product__metadata">
         {{ $t('postUnder') }}
         {{ $t(`category${category}`) }}
       </div>
-      <p class="product__stock" :class="product.stock">
+      <p class="product__stock" itemprop="availability" :class="product.stock">
         {{ $t(`${product.stock}description`) }}
       </p>
       <div class="product__content">
         <div class="product__price">
           <span :class="product.stock">
-            {{ product.price }}
-            <abbr :title="currency" class="product__currency">
+            <span itemprop="price">
+              {{ product.price }}
+            </span>
+            <abbr :title="currency" itemprop="priceCurrency" class="product__currency">
               {{ currencyIcon }}
             </abbr>
           </span>
@@ -34,9 +78,9 @@
         </div>
         <div class="product__data">
           <span v-if="hasGallery">
-            <directus-gallery :images="product.gallery" />
+            <directus-gallery itemprop="image" :images="product.gallery" />
           </span>
-          <div class="product__body" v-html="translate.description" />
+          <div class="product__body" itemprop="description" v-html="translate.description" />
         </div>
       </div>
     </div>

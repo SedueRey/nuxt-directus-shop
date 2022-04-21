@@ -1,15 +1,55 @@
 <template>
-  <article class="event">
+  <article class="event" itemscope itemtype="https://schema.org/Event">
     <!-- eslint-disable vue/no-v-html -->
-    <h1 class="event__title">
+    <h1 class="event__title" itemprop="name">
       {{ translate.title }}
     </h1>
-    <h2 v-if="translate.excerpt" class="event__excerpt" v-html="translate.excerpt" />
+    <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <a itemprop="item" href="/">
+          <span itemprop="name">{{ $t('appname') }}</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="separator">
+        //
+      </li>
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="/event"
+      >
+        <a
+          itemscope
+          itemtype="https://schema.org/WebPage"
+          itemprop="item"
+          itemid="https://example.com/books/sciencefiction"
+          href="https://example.com/books/sciencefiction"
+        >
+          <span itemprop="name">{{ $t('events') }}</span></a>
+        <meta itemprop="position" content="2">
+      </li>
+      <li class="separator">
+        //
+      </li>
+      <li
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <span itemprop="name">{{ translate.title }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+    </ol>
+    <h2 v-if="translate.excerpt" itemprop="about" class="event__excerpt" v-html="translate.excerpt" />
     <p class="event__metadata">
       {{ $t('eventfrom') }}
-      <time :datetime="event.startDate">{{ readableStartDate }}</time>
+      <time itemprop="startDate" :datetime="event.startDate">{{ readableStartDate }}</time>
       {{ $t('eventto') }}
-      <time :datetime="event.endDate">{{ readableEndDate }}</time>
+      <time itemprop="endDate" :datetime="event.endDate">{{ readableEndDate }}</time>
     </p>
     <client-only>
       <aside v-if="hasMap">
@@ -22,11 +62,11 @@
           marginwidth="0"
           :src="mapUrl"
         />
-        <a :href="locationUrl" target="_blank" class="event__mapLink">
+        <a itemprop="location" :href="locationUrl" target="_blank" class="event__mapLink">
           {{ $t('moreinfoeventlocation') }}
         </a>
       </aside>
-      <div class="event__body" v-html="translate.description" />
+      <div class="event__body" itemprop="description" v-html="translate.description" />
     </client-only>
   </article>
 </template>
