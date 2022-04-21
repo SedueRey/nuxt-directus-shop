@@ -1,7 +1,7 @@
 <template>
   <div
     id="menu"
-    class="menu"
+    class="menu z-10"
   >
     <!-- eslint-disable vue/no-v-html -->
     <span
@@ -71,6 +71,7 @@
         </li>
       </ul>
     </nav>
+    <shop-cart />
   </div>
 </template>
 

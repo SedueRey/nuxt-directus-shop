@@ -190,9 +190,13 @@ export default {
   }
 }
 .breadcrumbs {
-  @apply py-4 text-sm flex flex-row place-content-start;
+  @apply py-4 text-sm flex flex-row justify-start;
   li {
-    @apply mr-2
+    @apply mr-2;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   a {
     @apply text-quaternary underline hover:line-through

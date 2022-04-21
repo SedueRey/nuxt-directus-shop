@@ -38,5 +38,10 @@ export default {
   eventto: 'to',
   noevents: 'Sorry, there´s no events here',
   nsfw: 'Possibly not safe for work',
+  viewcart: 'View all items in cart',
+  removecart: 'Remove',
+  shoppingcarttitle: 'Your shopping cart',
+  shoppingcartnoitems: 'There are no items in your cart yet, try browsing through',
+  shoppingcartproducts: 'our products',
   moreinfoeventlocation: 'You can see the map details if you clic this link'
 }

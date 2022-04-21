@@ -106,7 +106,7 @@ export default {
     @apply text-quaternary text-xl md:text-2xl font-subheadings leading-tight mb-4 py-2 border-b-2 border-quaternary;
   }
   &__items {
-    @apply flex flex-col md:flex-row flex-wrap mx-0 mb-16 place-content-start;
+    @apply flex flex-col md:flex-row flex-wrap mx-0 mb-16 justify-start;
   }
   &__card {
     @apply mr-0 md:mr-4;

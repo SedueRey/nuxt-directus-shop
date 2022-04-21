@@ -38,5 +38,10 @@ export default {
   eventto: 'Hasta el',
   noevents: 'Lo sentimos, no hay eventos en estos momentos',
   nsfw: 'No es apropiado para abrir en el trabajo',
+  viewcart: 'Ver carrito completo',
+  removecart: 'Eliminar',
+  shoppingcarttitle: 'Tu carrito de la compra',
+  shoppingcartnoitems: 'Todavía no hay artículos en tu carrito, prueba a pasearte por',
+  shoppingcartproducts: 'nuestros productos',
   moreinfoeventlocation: 'Puede ver los detalles del mapa pulsando sobre este link'
 }
