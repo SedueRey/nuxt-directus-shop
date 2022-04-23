@@ -7,79 +7,114 @@ const capitalizeFirstLetter = (str) => {
 export default ({ app }, inject) => {
   inject('getAllOptions', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic ? `${staticBaseUrl}options.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}options?fields=*.*`
-    const posts = await app.$axios.get(url)
-      .then(r => r.data)
-      .then(r => isFullStatic ? r[0] : r.data[0])
-    return posts
+    if (isFullStatic) {
+      const options = require('../static/directus-mocks/options.json')
+      return options[0] || []
+    } else {
+      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}options?fields=*.*`
+      const posts = await app.$axios.get(url)
+        .then(r => r.data)
+        .then(r => r.data[0])
+      return posts
+    }
   })
   inject('getAllSocialMedia', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic ? `${staticBaseUrl}social_media.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}social_media?fields=*.*`
-    const socialMedia = await app.$axios.get(url)
-      .then(r => r.data)
-      .then(r => isFullStatic ? r : r.data)
-    return socialMedia
+    if (isFullStatic) {
+      return require('../static/directus-mocks/social_media.json')
+    } else {
+      const url = isFullStatic ? `${staticBaseUrl}social_media.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}social_media?fields=*.*`
+      const socialMedia = await app.$axios.get(url)
+        .then(r => r.data)
+        .then(r => isFullStatic ? r : r.data)
+      return socialMedia
+    }
   })
   inject('getAllPosts', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic
-      ? `${staticBaseUrl}posts.json`
-      : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=post&filter[status][_eq]=published`
+    if (isFullStatic) {
+      const staticPosts = require(`../static${staticBaseUrl}posts.json`)
+      return staticPosts.filter(el => el.type === 'post' && el.status === 'published')
+    }
+    const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=post&filter[status][_eq]=published`
     const posts = await app.$axios.get(url)
       .then(r => r.data)
-      .then(r => isFullStatic ? r.filter(el => el.type === 'post' && el.status === 'published') : r.data)
+      .then(r => r.data)
     return posts
   })
   inject('getAllPages', async () => {
     const isFullStatic = app.$config.isFullStatic
-    const url = isFullStatic
-      ? `${staticBaseUrl}posts.json`
-      : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=page&filter[status][_eq]=published`
+    if (isFullStatic) {
+      const staticPages = require(`../static${staticBaseUrl}posts.json`)
+      return staticPages.filter(el => el.type === 'page' && el.status === 'published')
+    }
+    const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[type][_eq]=page&filter[status][_eq]=published`
     const posts = await app.$axios.get(url)
       .then(r => r.data)
-      .then(r => isFullStatic ? r.filter(el => el.type === 'page' && el.status === 'published') : r.data)
+      .then(r => r.data)
     return posts
   })
   inject('getPostByUrl', async (urlPost) => {
     const isFullStatic = app.$config.isFullStatic
     let cleanUrlPost = urlPost.replaceAll('/', '')
-    if (cleanUrlPost === '' && isFullStatic) {
-      cleanUrlPost = 'index'
+    if (isFullStatic) {
+      if (cleanUrlPost === '') {
+        cleanUrlPost = 'index'
+      }
+      return require(`../static${staticBaseUrl}posts/${cleanUrlPost}.json`)
+    } else {
+      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPost}`
+      const post = await app.$axios.get(url)
+        .then(r => r.data)
+        .then(r => r.data)
+      return post
     }
-    const url = isFullStatic ? `${staticBaseUrl}posts/${cleanUrlPost}.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPost}`
-    const post = await app.$axios.get(url)
-      .then(r => r.data)
-      .then(r => isFullStatic ? r : r.data)
-    return post
   })
   inject('getPageByUrl', async (urlPage) => {
     const isFullStatic = app.$config.isFullStatic
-    const cleanUrlPage = urlPage.replaceAll('/', '')
-    const url = isFullStatic ? `${staticBaseUrl}posts/${cleanUrlPage}.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPage}`
-    const page = await app.$axios.get(url)
-      .then(r => r.data)
-      .then(r => isFullStatic ? r : r.data)
-    return page
+    let cleanUrlPage = urlPage.replaceAll('/', '')
+    if (isFullStatic) {
+      if (cleanUrlPage === '') {
+        cleanUrlPage = 'index'
+      }
+      return require(`../static${staticBaseUrl}posts/${cleanUrlPage}.json`)
+    } else {
+      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPage}`
+      const page = await app.$axios.get(url)
+        .then(r => r.data)
+        .then(r => r.data)
+      return page
+    }
   })
   const directusCollections = ['events', 'manufacture']
   directusCollections.forEach((el) => {
     inject(`getAll${capitalizeFirstLetter(el)}`, async () => {
       const isFullStatic = app.$config.isFullStatic
-      const url = isFullStatic ? `${staticBaseUrl}${el}.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}${el}?fields=*.*`
-      const items = await app.$axios.get(url)
-        .then(r => r.data)
-        .then(r => isFullStatic ? r : r.data)
-      return items
+      if (isFullStatic) {
+        return require(`../static${staticBaseUrl}${el}.json`)
+      } else {
+        const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}${el}?fields=*.*`
+        const items = await app.$axios.get(url)
+          .then(r => r.data)
+          .then(r => r.data)
+        return items
+      }
     })
     inject(`get${capitalizeFirstLetter(el)}ByUrl`, async (urlItem) => {
       const isFullStatic = app.$config.isFullStatic
-      const cleanUrlPage = urlItem.replaceAll('/', '')
-      const url = isFullStatic ? `${staticBaseUrl}${el}/${cleanUrlPage}.json` : `${app.$config.backendUrl}${apiDirectusBaseUrl}${el}?fields=*.*&filter[url][_eq]=${urlItem}`
-      const item = await app.$axios.get(url)
-        .then(r => r.data)
-        .then(r => isFullStatic ? r : r.data)
-      return item
+      let cleanUrlPage = urlItem.replaceAll('/', '')
+      if (isFullStatic) {
+        if (cleanUrlPage === '') {
+          cleanUrlPage = 'index'
+        }
+        return require(`../static${staticBaseUrl}${el}/${cleanUrlPage}.json`)
+      } else {
+        const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}${el}?fields=*.*&filter[url][_eq]=${urlItem}`
+        const item = await app.$axios.get(url)
+          .then(r => r.data)
+          .then(r => r.data)
+        return item
+      }
     })
   })
 }
