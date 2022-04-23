@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss">
 .checkout-success {
-  @apply text-2xl mt-8 text-center container mx-auto lg:px-32 space-y-4;
+  @apply min-h-screen text-2xl mt-8 text-center px-4 container mx-auto lg:px-32 space-y-4;
   h1 {
     @apply text-4xl text-tertiary font-headings leading-tight mt-16 mb-0 md:px-16;
   }

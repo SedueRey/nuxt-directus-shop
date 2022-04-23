@@ -28,7 +28,8 @@ export default {
   },
 
   env: {
-    STRIPE_PK: process.env.STRIPE_PK
+    STRIPE_PK: process.env.STRIPE_PK,
+    productionUrl: process.env.NUXT_BASE_URL
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,6 +40,7 @@ export default {
     '~plugins/vuex-shared-mutations.client.js',
     '~plugins/vuex-persisted-state.client.js',
     '~/plugins/vue-stripe.client.js',
+    '~/plugins/v-click-outside.client.js',
     '~/plugins/directusApi.js'
   ],
 
@@ -56,6 +58,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    'vue-social-sharing/nuxt',
     '@nuxtjs/axios'
   ],
 

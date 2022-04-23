@@ -28,9 +28,9 @@ export default {
 
 <style lang="scss">
 .checkout-error {
-  @apply text-2xl mt-8 text-center container mx-auto lg:px-64 space-y-4;
+  @apply min-h-screen text-2xl mt-8 px-4 text-center container mx-auto lg:px-64 space-y-8;
   h1 {
-    @apply text-4xl text-tertiary font-headings leading-tight mt-16 mb-0 md:px-16;
+    @apply text-4xl text-tertiary font-headings leading-tight mt-16 mb-8 md:px-16;
   }
   &__button {
     @apply text-2xl font-headings hover:bg-quaternary;

@@ -16,6 +16,7 @@ export default {
   postUnder: 'Posted under',
   postCreated: 'Written on',
   postUpdated: 'Last updated on',
+  share: 'Share on',
   selectedImage: 'Selected image',
   categorystatic: 'Fixed page',
   categoryartwork: 'Artworks',
