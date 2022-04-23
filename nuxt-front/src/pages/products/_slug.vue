@@ -9,6 +9,11 @@
       <h1 class="product__title" itemprop="name">
         {{ translate.title }}
       </h1>
+      <shop-multiple-share
+        :url="`products/${product.url}`"
+        :title="translate.title"
+        :description="translate.excerpt"
+      />
       <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li
           itemprop="itemListElement"

@@ -16,6 +16,7 @@ export default {
   postUnder: 'Publicado en',
   postCreated: 'Escrito el',
   postUpdated: 'Actualizado el',
+  share: 'Compartir en',
   selectedImage: 'Selected image',
   categorystatic: 'Página estática',
   categoryartwork: 'Ilustraciones',

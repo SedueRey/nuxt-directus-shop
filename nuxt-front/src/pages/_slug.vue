@@ -13,6 +13,11 @@
       <h1 class="single__title" itemprop="name">
         {{ translate.title }}
       </h1>
+      <shop-multiple-share
+        :url="`${post.url}`"
+        :title="translate.title"
+        :description="translate.short_description"
+      />
       <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li
           itemprop="itemListElement"
