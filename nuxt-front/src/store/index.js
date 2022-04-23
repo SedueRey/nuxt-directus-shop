@@ -20,7 +20,8 @@ export const mutations = {
         url: cartItem.url,
         qty: 1,
         name: cartItem.name,
-        price: cartItem.price
+        price: cartItem.price,
+        stripePricePK: cartItem.stripePricePK || null
       })
     }
   },

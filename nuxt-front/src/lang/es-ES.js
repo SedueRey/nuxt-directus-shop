@@ -43,5 +43,12 @@ export default {
   shoppingcarttitle: 'Tu carrito de la compra',
   shoppingcartnoitems: 'Todavía no hay artículos en tu carrito, prueba a pasearte por',
   shoppingcartproducts: 'nuestros productos',
-  moreinfoeventlocation: 'Puede ver los detalles del mapa pulsando sobre este link'
+  shoppingcartpagetitle: 'Carrito de la compra',
+  moreinfoeventlocation: 'Puede ver los detalles del mapa pulsando sobre este link',
+  checkouterrortitle: 'Ha habido un problema con su pago.',
+  checkouterrortext: 'Si no se ha arrepentido en el último momento de conseguir estos fantásticos productos, puede volver a probar.',
+  checkoutsuccesstitle: 'Gracias por apoyar a un pequeño creador',
+  checkoutsuccessslug: 'Su pedido se ha recibido correctamente',
+  checkoutsuccessthank: 'Gracias por su compra.',
+  checkoutsuccesstext: 'Me pondré en contacto con usted a la mayor brevedad para todos los detalles de envío y tiempos de entrega. Espero que disfrute de su compra.'
 }

@@ -7,7 +7,7 @@
     </h2>
     <div class="cartListItem__container">
       <span>
-        {{ item.qty }} x {{ item.price }}
+        {{ item.qty }} x {{ item.price.toFixed(2) }}
         <abbr :title="currency" class="cartListItem__currency">
           {{ currencyIcon }}
         </abbr>

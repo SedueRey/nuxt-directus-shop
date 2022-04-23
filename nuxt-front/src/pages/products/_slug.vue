@@ -31,8 +31,8 @@
             itemscope
             itemtype="https://schema.org/WebPage"
             itemprop="item"
-            itemid="https://example.com/books/sciencefiction"
-            href="https://example.com/books/sciencefiction"
+            itemid="/products"
+            href="/products"
           >
             <span itemprop="name">{{ $t('products') }}</span></a>
           <meta itemprop="position" content="2">
@@ -133,7 +133,8 @@ export default {
         url: this.product.url,
         qty: 1,
         name: this.translate.title,
-        price: this.product.price
+        price: this.product.price,
+        stripePricePK: this.product.stripe_key || null
       })
     }
   }

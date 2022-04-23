@@ -19,7 +19,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://js.stripe.com/v3' }
     ]
+  },
+
+  env: {
+    STRIPE_PK: process.env.STRIPE_PK
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -29,6 +36,7 @@ export default {
   plugins: [
     '~plugins/vuex-shared-mutations.client.js',
     '~plugins/vuex-persisted-state.client.js',
+    '~/plugins/vue-stripe.client.js',
     '~/plugins/directusApi.js'
   ],
 

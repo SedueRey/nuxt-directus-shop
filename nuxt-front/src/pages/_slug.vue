@@ -35,8 +35,8 @@
             itemscope
             itemtype="https://schema.org/WebPage"
             itemprop="item"
-            itemid="https://example.com/books/sciencefiction"
-            href="https://example.com/books/sciencefiction"
+            itemid="/posts"
+            href="/posts"
           >
             <span itemprop="name">{{ $t('posts') }}</span></a>
           <meta itemprop="position" content="2">

@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss">
 .productList {
-  @apply p-4 md:p-0;
+  @apply p-4 md:p-0 min-h-screen;
   &__title {
     @apply text-4xl font-headings text-tertiary my-4;
   }
