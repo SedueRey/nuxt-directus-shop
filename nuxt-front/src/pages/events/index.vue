@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss">
 .eventList {
-  @apply min-h-screen p-4 md:p-0;
+  @apply p-4 md:p-0 min-h-screen;
   &__title {
     @apply text-4xl font-headings text-tertiary my-4;
   }

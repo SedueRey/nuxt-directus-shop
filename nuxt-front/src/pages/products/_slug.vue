@@ -31,8 +31,8 @@
             itemscope
             itemtype="https://schema.org/WebPage"
             itemprop="item"
-            itemid="https://example.com/books/sciencefiction"
-            href="https://example.com/books/sciencefiction"
+            itemid="/products"
+            href="/products"
           >
             <span itemprop="name">{{ $t('products') }}</span></a>
           <meta itemprop="position" content="2">
@@ -72,6 +72,7 @@
             class="product__addToCart"
             :class="product.stock"
             :disabled="product.stock === 'soldout'"
+            @click="addToCart"
           >
             Add to cart
           </button>
@@ -92,7 +93,7 @@ import head from '~/mixins/head'
 export default {
   name: 'ProductDetailPage',
   mixins: [head],
-  layout: 'product-detail',
+  layout: 'product',
   async asyncData ({
     app,
     params,
@@ -124,6 +125,17 @@ export default {
       return this.$store.state.options
         ? this.$store.state.options.currency_icon || ''
         : ''
+    }
+  },
+  methods: {
+    addToCart () {
+      this.$store.commit('addToCart', {
+        url: this.product.url,
+        qty: 1,
+        name: this.translate.title,
+        price: this.product.price,
+        stripePricePK: this.product.stripe_key || null
+      })
     }
   }
 }
@@ -187,6 +199,19 @@ export default {
     &.lowstock {
       color: red;
     }
+  }
+}
+.breadcrumbs {
+  @apply py-4 text-sm flex flex-row justify-start;
+  li {
+    @apply mr-2;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  a {
+    @apply text-quaternary underline hover:line-through
   }
 }
 </style>

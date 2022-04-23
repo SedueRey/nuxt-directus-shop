@@ -38,5 +38,17 @@ export default {
   eventto: 'to',
   noevents: 'Sorry, there´s no events here',
   nsfw: 'Possibly not safe for work',
-  moreinfoeventlocation: 'You can see the map details if you clic this link'
+  viewcart: 'View all items in cart',
+  removecart: 'Remove',
+  shoppingcarttitle: 'Your shopping cart',
+  shoppingcartnoitems: 'There are no items in your cart yet, try browsing through',
+  shoppingcartproducts: 'our products',
+  shoppingcartpagetitle: 'Shopping Cart',
+  moreinfoeventlocation: 'You can see the map details if you clic this link',
+  checkouterrortitle: 'There has been a problem with your payment.',
+  checkouterrortext: 'If you didn\'t regret getting these fantastic products at the last moment, you can try again.',
+  checkoutsuccesstitle: 'Thanks for supporting a small creator!',
+  checkoutsuccessslug: 'Your order has been received',
+  checkoutsuccessthank: 'Thank you for your purchase.',
+  checkoutsuccesstext: 'I will contact you as soon as possible for all shipping details and delivery times.I hope you enjoy your purchase.'
 }
