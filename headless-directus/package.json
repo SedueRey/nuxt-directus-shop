@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "^9.8.0",
+    "directus": "^9.9.0",
     "mysql": "^2.18.1"
   }
 }
