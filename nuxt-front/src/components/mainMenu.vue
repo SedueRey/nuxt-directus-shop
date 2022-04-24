@@ -64,6 +64,11 @@
             {{ $t('contact') }}
           </nuxt-link>
         </li>
+        <client-only>
+          <li class="lg:inline-block lg:px-0 lg:py-2">
+            <theme-switcher />
+          </li>
+        </client-only>
         <li v-if="$i18n.locale !== 'en'" class="lg:inline-block lg:px-4 lg:py-2">
           <nuxt-link class="text-md ..." :to="switchLocalePath('en')">
             EN
@@ -240,7 +245,6 @@ export default {
       @apply font-headings float-left text-xl mt-1 ml-3
     }
     a {
-      color: #FFF;
       font-weight: 400;
       letter-spacing: 0.02em;
       &:hover {

@@ -1,9 +1,13 @@
 export const state = () => ({
+  preferTheme: '',
   options: null,
   cart: []
 })
 
 export const mutations = {
+  setTheme (state, theme) {
+    state.preferTheme = theme
+  },
   setOptions (state, options) {
     state.options = options
   },
@@ -64,5 +68,8 @@ export const getters = {
       total = total + el.qty
     })
     return total
-  }
+  },
+  theme: state => state.preferTheme,
+  activeTheme: state => state.preferTheme === 'dark',
+  hasTheme: state => state.preferTheme !== ''
 }
