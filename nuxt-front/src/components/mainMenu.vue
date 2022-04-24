@@ -59,6 +59,11 @@
             {{ $t('products') }}
           </nuxt-link>
         </li>
+        <li v-if="!isFullStatic" class="lg:inline-block lg:px-4 lg:py-2">
+          <nuxt-link :to="localePath('contact')">
+            {{ $t('contact') }}
+          </nuxt-link>
+        </li>
         <li v-if="$i18n.locale !== 'en'" class="lg:inline-block lg:px-4 lg:py-2">
           <nuxt-link class="text-md ..." :to="switchLocalePath('en')">
             EN
@@ -97,6 +102,9 @@ export default {
       return this.$store.state.options
         ? this.$store.state.options.showTitle || true
         : true
+    },
+    isFullStatic () {
+      return this.$config.isFullStatic
     }
   },
   methods: {

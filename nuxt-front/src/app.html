@@ -2,6 +2,15 @@
 <html>
   <head {{ HEAD_ATTRS }}>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      :root {
+        --error: #FAA;
+        --error-border: #F00;
+        @media (prefers-color-scheme: light)
+          --error: #C00;
+        }
+      }
+    </style>
     {{ HEAD }}
   </head>
   <body {{ BODY_ATTRS }}>
