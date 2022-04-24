@@ -117,4 +117,20 @@ export default ({ app }, inject) => {
       }
     })
   })
+  inject('contactform', async (formData) => {
+    const isFullStatic = app.$config.isFullStatic
+    if (!isFullStatic) {
+      const url = await `${app.$config.backendUrl}contact-form-api/`
+      try {
+        const res = await app.$axios.post(url, formData, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        return res.data.status
+      } catch (err) {
+        return { status: err.message }
+      }
+    }
+  })
 }
