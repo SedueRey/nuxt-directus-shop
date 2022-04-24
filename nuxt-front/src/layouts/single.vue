@@ -13,8 +13,10 @@
 </template>
 
 <script>
+import themeHead from '~/mixins/themeHead'
 export default {
   name: 'SingleTemplate',
+  mixins: [themeHead],
   data () {
     return {
       style: null
@@ -23,11 +25,6 @@ export default {
   async fetch () {
     this.style = await this.$getAllOptions()
     this.$store.commit('setOptions', this.style)
-  },
-  head: {
-    bodyAttrs: {
-      class: 'antialiased bg-primary text-secondary font-sans text-lg'
-    }
   }
 }
 </script>
