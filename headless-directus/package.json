@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "directus": "^9.9.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "xss-clean": "^0.1.1"
   }
 }
