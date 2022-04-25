@@ -189,8 +189,11 @@ export default {
     }
   }
   &__addToCart {
-    @apply bg-quaternary text-sm font-sans text-secondary font-bold py-2 px-4 rounded;
+    @apply bg-quaternary text-sm font-sans text-primary font-bold py-2 px-4 rounded;
     @apply md:block md:mt-4;
+    &:hover {
+      @apply opacity-90;
+    }
     &.soldout {
       @apply cursor-not-allowed opacity-50 text-primary;
     }

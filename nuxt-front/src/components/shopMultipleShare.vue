@@ -85,7 +85,7 @@ export default {
     }
   }
   &__networks {
-    @apply bg-quaternary text-secondary font-bold absolute p-4 pb-0 rounded-lg shadow-lg right-0 top-12;
+    @apply bg-menu text-secondary font-bold absolute p-4 pb-0 rounded-lg shadow-lg right-0 top-12;
   }
   &__networkItem {
     @apply block text-center bg-primary rounded-md py-4 px-16 mb-4 mt-4;

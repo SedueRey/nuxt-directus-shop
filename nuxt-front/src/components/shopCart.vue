@@ -156,7 +156,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background-color: var(--quaternary);
+      background-color: var(--menu);
       @screen lg {
         top: 3.5rem;
         width: 25rem;

@@ -17,7 +17,7 @@ module.exports = function registerHook({filter, action}) {
         } catch(e) {
           console.log(title, e);
         }
-        url = `/${now.getFullYear()}/${title.toLowerCase()}`;
+        url = `${title.toLowerCase()}`;
       }
     }
 		return {...input, url, published_date};
