@@ -61,6 +61,7 @@
           marginheight="0"
           marginwidth="0"
           :src="mapUrl"
+          :title="translate.title"
         />
         <a itemprop="location" :href="locationUrl" target="_blank" class="event__mapLink">
           {{ $t('moreinfoeventlocation') }}

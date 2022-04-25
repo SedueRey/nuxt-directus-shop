@@ -90,6 +90,7 @@ export default {
             headings: ['Montserrat', 'sans-serif']
           },
           colors: {
+            menu: 'var(--menu)',
             primary: 'var(--primary)',
             secondary: 'var(--secondary)',
             tertiary: 'var(--tertiary)',

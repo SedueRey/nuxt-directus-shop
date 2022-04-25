@@ -13,7 +13,7 @@ module.exports = function registerHook({filter, action}) {
         } catch(e) {
           console.log(title, e);
         }
-        url = `/${title.toLowerCase()}`;
+        url = `${title.toLowerCase()}`;
       }
     }
 		return {...input, url, published_date};

@@ -63,10 +63,13 @@ export default ({ app }, inject) => {
       }
       return require(`../static${staticBaseUrl}posts/${cleanUrlPost}.json`)
     } else {
-      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPost}`
+      if (cleanUrlPost === '') {
+        cleanUrlPost = '/'
+      }
+      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[url][_eq]=${cleanUrlPost}`
       const post = await app.$axios.get(url)
         .then(r => r.data)
-        .then(r => r.data)
+        .then(r => r.data.length > 0 ? r.data[0] : {})
       return post
     }
   })
@@ -79,10 +82,13 @@ export default ({ app }, inject) => {
       }
       return require(`../static${staticBaseUrl}posts/${cleanUrlPage}.json`)
     } else {
-      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*&filter[url][_eq]=${urlPage}`
+      if (cleanUrlPage === '') {
+        cleanUrlPage = '/'
+      }
+      const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}posts?fields=*.*,related_product.manufacture_uuid.url,tags.*.name&filter[url][_eq]=${cleanUrlPage}`
       const page = await app.$axios.get(url)
         .then(r => r.data)
-        .then(r => r.data)
+        .then(r => r.data.length > 0 ? r.data[0] : {})
       return page
     }
   })
@@ -112,7 +118,7 @@ export default ({ app }, inject) => {
         const url = `${app.$config.backendUrl}${apiDirectusBaseUrl}${el}?fields=*.*&filter[url][_eq]=${urlItem}`
         const item = await app.$axios.get(url)
           .then(r => r.data)
-          .then(r => r.data)
+          .then(r => r.data.length > 0 ? r.data[0] : {})
         return item
       }
     })

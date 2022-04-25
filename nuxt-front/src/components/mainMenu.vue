@@ -15,7 +15,7 @@
       </div>
     </span>
     <span class="menu__bg" @click="hideMenu" />
-    <nav class="menu__items p-5 shadow-2xl lg:shadow-lg lg:p-2 lg:bg-quaternary lg:text-secondary">
+    <nav class="menu__items p-5 shadow-2xl lg:shadow-lg lg:p-2 lg:bg-menu lg:text-secondary">
       <p
         class="text-2xl font-headings pb-16 font-bold lg:hidden"
         v-html="$t('menulabel')"
@@ -182,7 +182,7 @@ export default {
       left: 0;
       bottom: 0;
       overflow: auto;
-      background-color: var(--tertiary);
+      background-color: var(--menu);
       color: var(--secondary);
       width: 88vw;
       transform: translateX(-100vw);
@@ -239,7 +239,7 @@ export default {
     right: 0;
     z-index: 10;
     &__items {
-      background-color: #348185;
+      background-color: var(--menu);
     }
     &__title {
       @apply font-headings float-left text-xl mt-1 ml-3
