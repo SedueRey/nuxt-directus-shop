@@ -78,6 +78,9 @@ export default {
       .postCard__title {
         @apply text-primary;
       }
+      .postCard__excerpt {
+        @apply text-primary;
+      }
     }
   }
   &__canvas {

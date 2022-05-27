@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "npx directus start",
-    "update": "npx directus database migrate:latest",
+    "update": "npm update && npx directus database migrate:latest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "^9.8.0",
+    "directus": "^9.11.1",
     "mysql": "^2.18.1",
     "xss-clean": "^0.1.1"
   }

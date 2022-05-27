@@ -130,7 +130,7 @@ export default {
   },
 
   publicRuntimeConfig: {
-    isFullStatic: process.env.NUXT_ENV_FULL_STATIC,
+    isFullStatic: process.env.NUXT_ENV_FULL_STATIC === 'true',
     backendUrl: process.env.DIRECTUS_BACKEND_URL
   },
 

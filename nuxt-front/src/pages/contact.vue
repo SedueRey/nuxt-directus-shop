@@ -28,6 +28,7 @@
           type="text"
           name="username"
           :placeholder="$t('contactformnameplaceholder')"
+          @blur="modifiedName = true"
         >
         <span v-if="!isValidName" class="contact__error">
           {{ $t('contactformnameerror') }}
@@ -41,6 +42,7 @@
           type="email"
           name="useremail"
           :placeholder="$t('contactformemailplaceholder')"
+          @blur="modifiedEmail = true"
         >
         <span v-if="!isValidEmail" class="contact__error">
           {{ $t('contactformemailerror') }}
@@ -54,6 +56,7 @@
           type="text"
           name="usersubject"
           :placeholder="$t('contactformsubjectplaceholder')"
+          @blur="modifiedSubject = true"
         >
         <span v-if="!isValidSubject" class="contact__error">
           {{ $t('contactformsubjecterror') }}
@@ -65,6 +68,7 @@
           :class="isValidText ? '' : 'is-invalid'"
           class="contact__textarea"
           name="usertext"
+          @blur="modifiedText = true"
         />
         <span v-if="!isValidSubject" class="contact__error">
           {{ $t('contactformtexterror') }}
@@ -90,26 +94,34 @@ export default {
       },
       isLoading: false,
       username: '',
+      modifiedName: false,
       useremail: '',
+      modifiedEmail: false,
       usersubject: '',
-      usertext: ''
+      modifiedSubject: false,
+      usertext: '',
+      modifiedText: false
     }
   },
   computed: {
     isValidName () {
-      return this.username.trim() !== ''
+      return !this.modifiedName ? true : this.username.trim() !== ''
     },
     isValidEmail () {
-      return (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.useremail.trim()))
+      return !this.modifiedEmail ? true : (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.useremail.trim()))
     },
     isValidSubject () {
-      return this.usersubject.trim() !== ''
+      return !this.modifiedSubject ? true : this.usersubject.trim() !== ''
     },
     isValidText () {
-      return this.usertext.trim() !== ''
+      return !this.modifiedText ? true : this.usertext.trim() !== ''
     },
     isValidForm () {
-      return this.isValidName && this.isValidEmail && this.isValidSubject && this.isValidText
+      return (
+        this.modifiedName && this.modifiedEmail && this.modifiedSubject && this.modifiedText
+      ) && (
+        this.isValidName && this.isValidEmail && this.isValidSubject && this.isValidText
+      )
     }
   },
   mounted () {

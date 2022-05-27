@@ -75,11 +75,11 @@ export default {
       width: calc(25% - 1rem);
     }
     &:hover {
+      * {
+        @apply text-primary;
+      }
       .productCard__canvas {
         @apply bg-tertiary;
-      }
-      .productCard__title {
-        @apply text-primary;
       }
     }
   }

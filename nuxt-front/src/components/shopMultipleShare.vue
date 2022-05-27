@@ -83,6 +83,9 @@ export default {
     @media (prefers-color-scheme: light) {
       filter: invert(0)
     }
+    body.prefers-color-light & {
+      filter: invert(0)
+    }
   }
   &__networks {
     @apply bg-menu text-secondary font-bold absolute p-4 pb-0 rounded-lg shadow-lg right-0 top-12;

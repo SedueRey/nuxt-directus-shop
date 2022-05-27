@@ -16,6 +16,6 @@ module.exports = function registerHook({filter, action}) {
         url = `${title.toLowerCase()}`;
       }
     }
-		return {...input, url, published_date};
+		return {...input, url};
 	});
 };
