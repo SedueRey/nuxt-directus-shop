@@ -1,46 +1,48 @@
 <template>
-  <aside v-if="cart" class="shopcart">
-    <img
-      class="shopcart__icon"
-      src="/svg/cart.svg"
-      alt="Shopping Cart icon"
-      @click="toggle"
-    >
-    <span
-      v-if="hasCart"
-      class="shopcart__count"
-      @click="toggle"
-    >
-      {{ countCart }}
-    </span>
-    <div
-      v-if="hasCart && isExpanded"
-      class="shopcart__bg"
-      role="presentation"
-      @click="toggle"
-    />
-    <div v-if="hasCart" class="shopcart__menu" :class="classCart">
-      <ul class="shopcart__menuitems">
-        <li v-for="item in cart" :key="item.url">
-          <cart-list-item :item="item" :buttons="false" />
-        </li>
-        <li class="shopcart__total">
-          {{ totalCart }}
-          <abbr :title="currency" class="cartListItem__currency">
-            {{ currencyIcon }}
-          </abbr>
-        </li>
-      </ul>
-      <nuxt-link
-        class="shopcart__linkCart"
-        :to="localePath('cart')"
+  <client-only>
+    <aside v-if="cart" class="shopcart">
+      <img
+        class="shopcart__icon"
+        src="/svg/cart.svg"
+        alt="Shopping Cart icon"
+        @click="toggle"
       >
-        <span class="block" @click="toggle">
-          {{ $t('viewcart') }}
-        </span>
-      </nuxt-link>
-    </div>
-  </aside>
+      <span
+        v-if="hasCart"
+        class="shopcart__count"
+        @click="toggle"
+      >
+        {{ countCart }}
+      </span>
+      <div
+        v-if="hasCart && isExpanded"
+        class="shopcart__bg"
+        role="presentation"
+        @click="toggle"
+      ></div>
+      <div v-if="hasCart" class="shopcart__menu" :class="classCart">
+        <ul class="shopcart__menuitems">
+          <li v-for="item in cart" :key="item.url">
+            <cart-list-item :item="item" :buttons="false" />
+          </li>
+          <li class="shopcart__total">
+            {{ totalCart }}
+            <abbr :title="currency" class="cartListItem__currency">
+              {{ currencyIcon }}
+            </abbr>
+          </li>
+        </ul>
+        <nuxt-link
+          class="shopcart__linkCart"
+          :to="localePath('cart')"
+        >
+          <span class="block" @click="toggle">
+            {{ $t('viewcart') }}
+          </span>
+        </nuxt-link>
+      </div>
+    </aside>
+  </client-only>
 </template>
 
 <script>

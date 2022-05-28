@@ -2,7 +2,8 @@
   <li
     class="lg:inline-block lg:px-4 lg:py-2"
   >
-    <nuxt-link :to="localePath(page.url)">
+    <a :href="`/${page.url}`" class="hidden">{{ $t(label) }}</a>
+    <nuxt-link :to="localePath(`/${page.url}`)">
       {{ $t(label) }}
     </nuxt-link>
   </li>

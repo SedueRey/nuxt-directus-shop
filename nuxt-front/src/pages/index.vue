@@ -7,8 +7,8 @@
     <h1 class="page__title">
       {{ translate.title }}
     </h1>
-    <div class="page__shortDescription" v-html="translate.short_description" />
-    <div class="page__description" v-html="translate.content" />
+    <div v-if="translate" class="page__shortDescription" v-html="translate.short_description"></div>
+    <div v-if="translate" class="page__description" v-html="translate.content"></div>
   </section>
 </template>
 

@@ -13,7 +13,7 @@
         v-if="translate.excerpt"
         class="eventCard__excerpt"
         v-html="translate.excerpt.substring(0, 100)"
-      />
+      ></p>
     </nuxt-link>
   </li>
 </template>

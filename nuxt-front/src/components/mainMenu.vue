@@ -9,17 +9,17 @@
       @click="toggleMenu"
     >
       <div class="hamburger__inner">
-        <span class="" />
-        <span class="" />
-        <span class="" />
+        <span class=""></span>
+        <span class=""></span>
+        <span class=""></span>
       </div>
     </span>
-    <span class="menu__bg" @click="hideMenu" />
+    <span class="menu__bg" @click="hideMenu"></span>
     <nav class="menu__items p-5 shadow-2xl lg:shadow-lg lg:p-2 lg:bg-menu lg:text-secondary">
       <p
         class="text-2xl font-headings pb-16 font-bold lg:hidden"
         v-html="$t('menulabel')"
-      />
+      ></p>
       <ul
         class="menu__menulist text-xl space-y-6 text-base lg:text-right lg:space-y-0 lg:container lg:mx-auto"
         @click="hideMenu"

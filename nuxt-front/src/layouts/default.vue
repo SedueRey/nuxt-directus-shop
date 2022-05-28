@@ -19,7 +19,10 @@ export default {
   mixins: [themeHead],
   data () {
     return {
-      style: null
+      style: {
+        CSSPalette: '',
+        Typographies: ''
+      }
     }
   },
   async fetch () {

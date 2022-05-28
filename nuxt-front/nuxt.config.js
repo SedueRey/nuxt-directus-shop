@@ -104,7 +104,7 @@ export default {
   i18n: {
     defaultLocale: 'en',
     seo: true,
-    baseUrl: 'process.env.NUXT_ENV_BASE_URL',
+    baseUrl: process.env.NUXT_ENV_BASE_URL,
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_seduerey',
@@ -139,7 +139,7 @@ export default {
     gzip: true,
     routes () {
       return getRoutes({
-        isStatic: process.env.NUXT_ENV_FULL_STATIC,
+        isStatic: process.env.NUXT_ENV_FULL_STATIC === 'true',
         locales: ['', 'es'],
         collections: [
           { name: 'posts', url: '/' },

@@ -69,7 +69,7 @@
           class="contact__textarea"
           name="usertext"
           @blur="modifiedText = true"
-        />
+        ></textarea>
         <span v-if="!isValidSubject" class="contact__error">
           {{ $t('contactformtexterror') }}
         </span>

@@ -29,7 +29,7 @@
         v-if="translate.short_description"
         class="postCard__excerpt"
         v-html="translate.short_description.substring(0, 100)"
-      />
+      ></p>
     </nuxt-link>
   </li>
 </template>

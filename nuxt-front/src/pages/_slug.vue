@@ -58,7 +58,7 @@
           <meta itemprop="position" content="3">
         </li>
       </ol>
-      <h2 itemprop="abstract" class="single__shortDescription" v-html="translate.short_description" />
+      <h2 itemprop="abstract" class="single__shortDescription" v-html="translate.short_description"></h2>
       <div v-if="isPost" class="single__metadata">
         <span>
           {{ $t('postCreated') }}: <time itemprop="datePublished" :datetime="post.published_date">{{ readableCreatedDate }}</time>
@@ -83,7 +83,7 @@
       <span v-if="hasGallery">
         <directus-gallery :images="post.gallery" />
       </span>
-      <div class="single__articleBody" itemprop="articleBody" v-html="translate.content" />
+      <div class="single__articleBody" itemprop="articleBody" v-html="translate.content"></div>
       <aside v-if="hasRelatedProducts" class="single__relatedProducts">
         <h1 class="single__relatedProductsTitle">
           Related products
