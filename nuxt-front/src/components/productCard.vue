@@ -32,7 +32,7 @@
         v-if="translate.excerpt"
         class="productCard__excerpt"
         v-html="translate.excerpt.substring(0, 100)"
-      />
+      ></p>
     </nuxt-link>
   </li>
 </template>

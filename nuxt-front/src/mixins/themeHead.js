@@ -1,6 +1,6 @@
 export default {
   head () {
-    const theme = this.theme
+    const theme = this.theme || ''
     const classTheme = (theme) ? `prefers-color-${theme}` : ''
     return {
       bodyAttrs: {

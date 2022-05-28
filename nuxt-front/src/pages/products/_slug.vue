@@ -54,7 +54,7 @@
           <meta itemprop="position" content="3">
         </li>
       </ol>
-      <h2 v-if="translate.excerpt" itemprop="slogan" class="product__excerpt" v-html="translate.excerpt" />
+      <h2 v-if="translate.excerpt" itemprop="slogan" class="product__excerpt" v-html="translate.excerpt"></h2>
       <div v-if="category" class="product__metadata">
         {{ $t('postUnder') }}
         {{ $t(`category${category}`) }}
@@ -86,7 +86,7 @@
           <span v-if="hasGallery">
             <directus-gallery itemprop="image" :images="product.gallery" />
           </span>
-          <div class="product__body" itemprop="description" v-html="translate.description" />
+          <div class="product__body" itemprop="description" v-html="translate.description"></div>
         </div>
       </div>
     </div>

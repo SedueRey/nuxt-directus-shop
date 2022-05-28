@@ -44,7 +44,7 @@
         <meta itemprop="position" content="3">
       </li>
     </ol>
-    <h2 v-if="translate.excerpt" itemprop="about" class="event__excerpt" v-html="translate.excerpt" />
+    <h2 v-if="translate.excerpt" itemprop="about" class="event__excerpt" v-html="translate.excerpt"></h2>
     <p class="event__metadata">
       {{ $t('eventfrom') }}
       <time itemprop="startDate" :datetime="event.startDate">{{ readableStartDate }}</time>
@@ -62,12 +62,12 @@
           marginwidth="0"
           :src="mapUrl"
           :title="translate.title"
-        />
+        ></iframe>
         <a itemprop="location" :href="locationUrl" target="_blank" class="event__mapLink">
           {{ $t('moreinfoeventlocation') }}
         </a>
       </aside>
-      <div class="event__body" itemprop="description" v-html="translate.description" />
+      <div class="event__body" itemprop="description" v-html="translate.description"></div>
     </client-only>
   </article>
 </template>
