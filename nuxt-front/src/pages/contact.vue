@@ -134,7 +134,7 @@ export default {
       this.loading = true
       this.status = await this.$contactform({
         username: this.username,
-        usermail: this.usermail,
+        usermail: this.useremail,
         usersubject: this.usersubject,
         usertext: this.usertext
       })
